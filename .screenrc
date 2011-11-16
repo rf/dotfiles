@@ -1,0 +1,99 @@
+# russ frank's .screenrc
+
+# change the message displayed at the bottom of the screen when
+# activity is detected
+activity "activity: window %"
+
+# i like to bind these keys to select other windows, kinda like
+# irssi does, and i usually have 15-20 wins open
+bind q select 10
+bind w select 11
+bind e select 12
+bind r select 13
+bind t select 14
+bind y select 15
+bind u select 16
+bind i select 17
+bind o select 18
+bind p select 19
+
+# why is shift necessary for these..?
+bind "'" windowlist -b
+bind s split
+bind x remove
+
+# next and previous keys:  < and > again no shift required
+bind "." next
+bind "," prev
+
+# change the escape key to ` since i dont really use that ever
+escape "``"
+
+# make a switch between two windows
+bind a other
+
+# captions display below windows.  this is a nice window list
+# that will use up as much of your screen as possible.  it is
+# also teal, and the currently active window is white on blue.
+# it also turns grey when inactive (in split mode).  'always'
+# makes it never go away.  See the screen manual for more
+# info on how I did this.
+caption always '%?%F%{.b.}%?%-w%{= gw}%50>%n %t%{-}%+w%<'
+
+# hard status is at the bottom of the terminal, there's only 1
+# regardless of how many times you split.  This shows the time,
+# date, load avgs and the hostname, aligned to the right of the
+# screen.
+hardstatus alwayslastline "%=%C:%s %A %D %M %d %Y load: %l on %H"
+
+startup_message off 
+
+screen bash
+title ""
+screen bash
+title ""
+screen bash
+title ""
+screen bash
+title ""
+screen bash
+title ""
+screen bash
+title ""
+screen bash
+title ""
+screen bash
+title ""
+screen bash
+title ""
+screen bash
+title ""
+#pgup / pgdown
+bindkey -m "^[[6;5~" stuff "^f"
+bindkey -m "^[[5;5~" stuff "^b"
+
+bindkey "^[[6;5~" eval "copy" "stuff ^f"
+bindkey "^[[5;5~" eval "copy" "stuff ^b"
+
+#resize keys
+bind = resize =
+bind + resize +2
+bind - resize -1
+bind _ resize max 
+
+defutf8 on
+utf8 on on
+
+
+
+#256 color stuff
+
+#terminfo and termcap for nice 256 color terminal
+# allow bold colors - necessary for some reason
+attrcolor b ".I"
+# tell screen how to set colors. AB = background, AF=foreground
+# the first two are for other terminal emulators, just in case.
+#termcapinfo xterm-256color "Co#256:AB=E[48;5;%dm:AF=E[38;5;%dm"
+term xterm-256color
+# erase background with current bg color
+#defbce "on"
