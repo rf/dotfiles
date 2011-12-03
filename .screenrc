@@ -2,7 +2,9 @@
 
 # change the message displayed at the bottom of the screen when
 # activity is detected
-activity "activity: window %"
+activity "activity: window % ^G"
+bell_msg "activity: window % ^G"
+vbell off
 
 # i like to bind these keys to select other windows, kinda like
 # irssi does, and i usually have 15-20 wins open
@@ -38,7 +40,7 @@ bind a other
 # it also turns grey when inactive (in split mode).  'always'
 # makes it never go away.  See the screen manual for more
 # info on how I did this.
-caption always '%?%F%{.b.}%?%-w%{= gw}%50>%n %t%{-}%+w%<'
+caption always '%?%F%{.g.}%?%-w%{= bw}%50>%n %t%{-}%+w%<'
 
 # hard status is at the bottom of the terminal, there's only 1
 # regardless of how many times you split.  This shows the time,

@@ -23,7 +23,7 @@ NC='\e[m'   # reset colors
 PS1=""
 PS1="$PS1$LIGHTRED\h "                          # hostname
 PS1="$PS1$GOLD\w "                              # path
-PS1="\n\@ $PS1\n$DARKGRAY$ $NC"                      # $ prompt
+PS1="\n\@ $PS1\n$DARKGRAY\\$ $NC"                      # $ prompt
 
 if [ -f ~/.bash_aliases ]; then
    . ~/.bash_aliases
