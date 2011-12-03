@@ -20,11 +20,10 @@ LIGHTGREEN='\e[1;32m'
 GOLD='\e[33m'
 NC='\e[m'   # reset colors
 
-PS1="\n"                                        # begin with newline
-PS1="$PS1$(date +%H:%M) "                       # date
+PS1=""
 PS1="$PS1$LIGHTRED\h "                          # hostname
 PS1="$PS1$GOLD\w "                              # path
-PS1="$PS1\n$DARKGRAY$ $NC"                      # $ prompt
+PS1="\n\@ $PS1\n$DARKGRAY$ $NC"                      # $ prompt
 
 if [ -f ~/.bash_aliases ]; then
    . ~/.bash_aliases
@@ -41,3 +40,7 @@ export DEBEMAIL DEBFULLNAME
 PATH=$PATH:~/.bin/
 
 export EDITOR=vim
+
+if [ -f ~/.nvm/nvm.sh ]; then
+   . ~/.nvm/nvm.sh
+fi
