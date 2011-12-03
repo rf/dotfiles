@@ -49,9 +49,15 @@ hi CursorColumn cterm=NONE ctermbg=black
 set cursorline!
 set cursorcolumn!
 
-" enable filetype plugins for jslint
-filetype plugin on
+" use pathogen
 
+filetype off
+
+call pathogen#infect()
+call pathogen#helptags()
+
+filetype plugin indent on
+syntax on
 
 " tips
 " { } pg skip
