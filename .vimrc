@@ -4,6 +4,8 @@ set number
 set shortmess=atI
 set ts=3
 set shiftwidth=3
+set softtabstop=3
+
 set expandtab
 :syn on
 if has("autocmd")
@@ -56,7 +58,7 @@ filetype off
 call pathogen#infect()
 call pathogen#helptags()
 
-filetype plugin indent on
+filetype plugin on
 syntax on
 
 " tips

@@ -13,13 +13,13 @@ endif
 " Python indent options
 if !pymode#Default('g:pymode_options_indent', 1) || g:pymode_options_indent
     setlocal cinwords=if,elif,else,for,while,try,except,finally,def,class
-    setlocal cindent
+    "setlocal cindent
     setlocal tabstop=4
     setlocal softtabstop=4
     setlocal shiftwidth=4
     setlocal shiftround
-    setlocal smartindent
-    setlocal smarttab
+    "setlocal smartindent
+    "setlocal smarttab
     setlocal expandtab
     setlocal autoindent
 endif
