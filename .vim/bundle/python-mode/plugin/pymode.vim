@@ -163,7 +163,7 @@ if !pymode#Default("g:pymode_doc", 1) || g:pymode_doc
     endif
 
     " OPTION: g:pymode_doc_key -- string. Key for show python documantation.
-    call pymode#Default("g:pymode_doc_key", "K")
+    call pymode#Default("g:pymode_doc_key", "X")
 
 endif
 

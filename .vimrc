@@ -42,8 +42,8 @@ endif
 noremap  :bp<CR>
 noremap  :bn<CR>
 
-nmap J }
-nmap K {
+map J }
+map K {
 
 " line highlighting
 hi CursorLine   cterm=NONE ctermbg=black
