@@ -20,9 +20,14 @@ LIGHTGREEN='\e[1;32m'
 GOLD='\e[33m'
 NC='\e[m'   # reset colors
 
+parse_git_branch() {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+
 PS1=""
 PS1="$PS1$LIGHTRED\h "                          # hostname
 PS1="$PS1$GOLD\w "                              # path
+PS1="$PS1$LIGHTGREEN\$(parse_git_branch) "
 PS1="\n\@ $PS1\n$DARKGRAY\\$ $NC"                      # $ prompt
 
 if [ -f ~/.bash_aliases ]; then
