@@ -15,7 +15,7 @@ LIGHTRED='\e[1;31m'
 GREEN='\e[32m'
 YELLOW='\e[1;33m'
 LIGHTBLUE="\e[1;34m"
-DARKGRAY='\e[37m'
+DARKGRAY='\e[0;37m'
 LIGHTGREEN='\e[1;32m'
 GOLD='\e[33m'
 NC='\e[m'   # reset colors
@@ -42,7 +42,7 @@ DEBEMAIL=rfrank.nj@gmail.com
 DEBFULLNAME="Russell Frank"
 export DEBEMAIL DEBFULLNAME
 
-PATH=$PATH:~/.bin/
+PATH=$PATH:~/.bin/:node_modules/.bin/
 
 export EDITOR=vim
 
