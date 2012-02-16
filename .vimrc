@@ -6,6 +6,7 @@ set ts=3
 set shiftwidth=3
 set softtabstop=3
 
+
 set expandtab
 :syn on
 if has("autocmd")
@@ -46,8 +47,8 @@ map J }
 map K {
 
 " line highlighting
-hi CursorLine   cterm=NONE ctermbg=black
-hi CursorColumn cterm=NONE ctermbg=black
+hi CursorLine   cterm=NONE ctermbg=darkred
+hi CursorColumn cterm=NONE ctermbg=darkred
 set cursorline!
 set cursorcolumn!
 
@@ -60,6 +61,12 @@ call pathogen#helptags()
 
 filetype plugin on
 syntax on
+
+let g:indent_guides_auto_colors = 0
+let g:indent_guides_enable_on_vim_startup = 1
+
+hi IndentGuidesOdd  guibg=red   ctermbg=235
+hi IndentGuidesEven guibg=green ctermbg=236
 
 " tips
 " { } pg skip
