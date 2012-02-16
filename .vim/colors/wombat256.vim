@@ -6,6 +6,7 @@
 " works on xterms with 88 or 256 colors. The algorithm for approximating the
 " GUI colors with the xterm palette is from desert256.vim by Henry So Jr.
 
+
 set background=dark
 
 if version > 580
@@ -302,3 +303,4 @@ delf <SID>grey_number
 " }}}
 
 " vim:set ts=4 sw=4 noet fdm=marker:
+"
