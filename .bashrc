@@ -20,11 +20,7 @@ parse_git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
 }
 
-PS1=""
-PS1="$PS1$LIGHTRED\h  "                          # hostname
-PS1="$PS1$GOLD\w  "                              # path
-PS1="$PS1$LIGHTGREEN\$(parse_git_branch)  "
-PS1="\n\@  $PS1\n$DARKGRAY\\$ $NC"                      # $ prompt
+PS1="\n\@ $LIGHTRED \h $GOLD \w $LIGHTGREEN $(parse_git_branch)\n$NC\\$ "
 
 if [ -f ~/.bash_aliases ]; then
    . ~/.bash_aliases
@@ -38,7 +34,7 @@ DEBEMAIL=rfrank.nj@gmail.com
 DEBFULLNAME="Russell Frank"
 export DEBEMAIL DEBFULLNAME
 
-PATH=$PATH:~/.bin/:node_modules/.bin/
+PATH=~/.bin/:~/node_modules/.bin/:/opt/local/bin/:$PATH
 
 export EDITOR=vim
 
