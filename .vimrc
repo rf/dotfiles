@@ -56,8 +56,11 @@ set cursorcolumn!
 
 filetype off
 
-call pathogen#infect()
-call pathogen#helptags()
+" This stuff doesn't work on the old vim setups in solaris and centos
+if version >= 702
+   call pathogen#infect()
+   call pathogen#helptags()
+endif
 
 filetype plugin on
 syntax on
