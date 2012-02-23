@@ -21,7 +21,7 @@ parse_git_branch() {
 }
 
 
-PS1="\n\@ $LIGHTRED \h $GOLD \w $LIGHTGREEN \`parse_git_branch\`\n$NC\\$ "
+PS1="\n\@ $LIGHTRED \h $GOLD \w $LIGHTGREEN \`parse_git_branch\`$NC\n\\$ "
 
 if [ -f ~/.bash_aliases ]; then
    . ~/.bash_aliases
