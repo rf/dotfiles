@@ -109,6 +109,8 @@ hi IndentGuidesEven guibg=green ctermbg=236
 set backupdir=~/.vim-tmp//,/tmp//
 set directory=~/.vim-tmp//,/tmp//
 
+set title
+
 " tips
 " { } pg skip
 " zz to scroll current line to mid of scr

@@ -2,8 +2,8 @@
 
 loadplugins '\.(js|penta)$'
 group user
-map -count -modes=n,v J -builtin <count><count><C-d>
-map -count -modes=n,v K -builtin <count><count><C-u>
+map -count -modes=n,v K <count><C-u>
+map -count -modes=n,v J <count><C-d>
 set followhints=1
 set hintkeys=asdfghjkl;
 
