@@ -22,6 +22,13 @@ nnoremap <silent> g* g*zz
 nnoremap <silent> g# g#zz
 "
 
+" part of vimbit 30 better command-line editing
+imap <C-a> <Home>
+imap <C-e> <End>
+nmap <C-a> <Home>
+nmap <C-e> <End>
+"
+
 set expandtab
 :syn on
 if has("autocmd")
