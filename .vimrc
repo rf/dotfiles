@@ -105,6 +105,10 @@ let g:indent_guides_enable_on_vim_startup = 1
 hi IndentGuidesOdd  guibg=red   ctermbg=235
 hi IndentGuidesEven guibg=green ctermbg=236
 
+" throw all temp files in ~/.vim-tmp/
+set backupdir=~/.vim-tmp//,/tmp//
+set directory=~/.vim-tmp//,/tmp//
+
 " tips
 " { } pg skip
 " zz to scroll current line to mid of scr
