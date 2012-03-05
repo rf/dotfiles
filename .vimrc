@@ -6,6 +6,13 @@ set ts=3
 set shiftwidth=3
 set softtabstop=3
 
+" vimbit 10 easy split navigation
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+"
+
 
 set expandtab
 :syn on
