@@ -13,6 +13,14 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 "
 
+" vimbit 92 kep search pattern at center of screen
+nnoremap <silent> n nzz
+nnoremap <silent> N Nzz
+nnoremap <silent> * *zz
+nnoremap <silent> # #zz
+nnoremap <silent> g* g*zz
+nnoremap <silent> g# g#zz
+"
 
 set expandtab
 :syn on
