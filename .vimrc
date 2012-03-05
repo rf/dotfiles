@@ -29,6 +29,18 @@ nmap <C-a> <Home>
 nmap <C-e> <End>
 "
 
+" vimbit 13 80 character line coloring
+if exists('+colorcolumn')
+set colorcolumn=80
+else
+au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+endif      
+"
+
+" vimbit 45 sudo save file
+cmap w!! %!sudo tee > /dev/null %
+"
+
 set expandtab
 :syn on
 if has("autocmd")
