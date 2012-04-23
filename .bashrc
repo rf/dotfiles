@@ -7,21 +7,35 @@ HISTCONTROL=ignoreboth
 shopt -s histappend   # append to history file
 shopt -s checkwinsize # ensure window size is correct
 
-LIGHTRED='\e[1;31m'
-GREEN='\e[32m'
-YELLOW='\e[1;33m'
-LIGHTBLUE="\e[1;34m"
-DARKGRAY='\e[0;37m'
-LIGHTGREEN='\e[1;32m'
-GOLD='\e[33m'
+function EXT_COL () { echo -ne "\[\033[38;5;$1m\]"; }
+
+set -o vi
+
+export CLICOLOR=true
+
 NC='\e[m'   # reset colors
+
+USERCOL=`EXT_COL 23`
+ATCOL=`EXT_COL 24`
+HOSTCOL=`EXT_COL 25`
+PATHCOL=`EXT_COL 115`
+BRANCHCOL=`EXT_COL 216`
+RETURNCOL=`EXT_COL 9`
 
 parse_git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
 }
 
+is_nonzero_ret() {
+   printf '%.*s' $? $?
+}
 
-PS1="\n\@ $LIGHTRED \h $GOLD \w $LIGHTGREEN \`parse_git_branch\`$NC\n\\$ "
+nonzero_return() {
+   RETVAL=$?
+   [ $RETVAL -eq 1 ] && echo " ⏎ $RETVAL "
+}
+
+PS1="\n\@ $USERCOL \u $ATCOL@ $HOSTCOL\h $PATHCOL \w $RETURNCOL\`nonzero_return\`$BRANCHCOL \`parse_git_branch\` $NC\n\\$ "
 
 if [ -f ~/.bash_aliases ]; then
    . ~/.bash_aliases
