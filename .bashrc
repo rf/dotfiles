@@ -15,13 +15,13 @@ function EXT_COL () { echo -ne "\[\033[38;5;$1m\]"; }
 
 NC='\e[m'   # reset colors
 
-USERCOL=`EXT_COL 23`
-ATCOL=`EXT_COL 24`
-HOSTCOL=`EXT_COL 25`
+USERCOL=`EXT_COL 25`
+ATCOL=`EXT_COL 26`
+HOSTCOL=`EXT_COL 29`
 PATHCOL=`EXT_COL 115`
 BRANCHCOL=`EXT_COL 216`
 RETURNCOL=`EXT_COL 9`
-TIMECOL=`EXT_COL 236`
+TIMECOL=`EXT_COL 242`
 
 parse_git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
