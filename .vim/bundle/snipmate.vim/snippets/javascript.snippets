@@ -1,26 +1,26 @@
 # Prototype
-snippet method
+snippet m
 	// ## $2
 	// ${4:description}
 	${1:class}.prototype.${2:method} = function (${3:arguments}) {
 		var self = this;
 		${5:// body...}
-	};
+	};${6}
 # Function
 snippet fun
 	// ## $1
 	// ${3:description}
 	function ${1:function_name} (${2:argument}) {
 		${4:// body...}
-	}
+	}${5}
 # constructor
-snippet cons
+snippet cl
 	// # $1
 	// ${3:description}
 	function ${1:class} (${2:arguments}) {
 		var self = this;
 		${4:// body...}
-	}
+	}${5}
 # Anonymous Function
 snippet f
 	function (${1}) {
@@ -30,7 +30,7 @@ snippet f
 snippet if
 	if (${1:true}) {
 		${2}
-	}
+	}${3}
 # if ... else
 snippet ife
 	if (${1:true}) {
@@ -39,7 +39,15 @@ snippet ife
 
 	else {
 		${3}
-	}
+	}${4}
+snippet elif
+	else if (${1:true}) {
+		${2}
+	}${3}
+snippet el
+	else {
+		${1}
+	}${2}
 # tertiary conditional
 snippet t
 	${1:/* condition */} ? ${2:a} : ${3:b}
@@ -63,7 +71,7 @@ snippet case
 snippet for
 	for (var ${2:i} = 0; $2 < ${1:Things}.length; $2${3:++}) {
 		${4:$1[$2]}
-	};
+	}
 # while (...) {...}
 snippet wh
 	while (${1:/* condition */}) {
@@ -94,16 +102,16 @@ snippet gett
 snippet addl
 	addEventListener('${1:event_name}', function (event) {
 		${2:// body}
-	});
+	});${3}
 snippet onl
 	on('${1:event_name}', function (event) {
 		${2:// body}
-	});
+	});${3}
 snippet on
-	on('${1:event_name}', ${2:function}.bind(${3:bound_to}));
+	on('${1:event_name}', ${2:function}.bind(${3:bound_to}));${4}
 # event listener, not lambda
 snippet add
-	addEventListener('${1:event_name}', ${2:function}.bind(${3:bound_to}));
+	addEventListener('${1:event_name}', ${2:function}.bind(${3:bound_to}));${4}
 snippet iife
 	(function () {
 
@@ -116,13 +124,13 @@ snippet logvar
 	console.log("${1:varname}:", $1);
 snippet req
 	var ${1:varname} = require("${2:filename}");
-
+	${3}
 snippet desc
 	util.describe(${1:this});
-
+	${2}
 snippet self
 	var self = this;
-
+	${1}
 snippet {
 	{
 		${1: // body}
@@ -175,8 +183,8 @@ snippet some
 	});
 snippet reduce
 	reduce(function (memo, item) { 
-		${1:/* body */}
-	}, ${2:[]});
+		${2:/* body */}
+	}, ${1:[]});
 snippet keysfor
 	Object.keys(${1:collection}).forEach(function (item) {
 		${2:// body}
