@@ -1,6 +1,5 @@
 snippet main
-	public static void main (String [] args)
-	{
+	public static void main (String [] args) {
 		${1:/* code */}
 	}
 snippet pu
@@ -23,7 +22,9 @@ snippet de
 	default:
 		${1}
 snippet ca
-	catch(${1:Exception} ${2:e}) ${3}
+	catch (${1:Exception} ${2:e}) {
+		${3}
+	}
 snippet th
 	throw 
 snippet sy
@@ -45,35 +46,64 @@ snippet j.n
 snippet j.m
 	java.math.
 snippet if
-	if (${1}) ${2}
+	if (${1}) {
+		${2}
+	}
 snippet el
-	else 
+	else {
+		${3}
+	}
 snippet elif
-	else if (${1}) ${2}
+	else if (${1}) {
+		${2}
+	}
 snippet wh
-	while (${1}) ${2}
+	while (${1}) {
+		${2}
+	}
 snippet for
-	for (${1}; ${2}; ${3}) ${4}
+	for (${1}; ${2}; ${3}) {
+		${4}
+	}
 snippet fore
-	for (${1} : ${2}) ${3}
+	for (${1} : ${2}) {
+		${3}
+	}
+snippet iter
+	Iterator <${1:type}> ${2:i} = ${3:collection}.iterator();
+	while ($2.hasNext()) {
+		$1 ${4:item} = $2.next();
+		${5:// body}
+	}
 snippet sw
 	switch (${1}) ${2}
+snippet eq
+	equals(${1})${2}
 snippet cs
 	case ${1}:
 		${2}
-	${3}
-snippet tc
-	public class ${1:`Filename()`} extends ${2:TestCase}
-snippet t
-	public void test${1:Name}() throws Exception ${2}
+	break;
 snippet cl
-	class ${1:`Filename("", "untitled")`} ${2}
+	/** ${3:description} 
+		  @author ${4:`g:snips_author`} **/
+	public class ${1:`Filename("", "untitled")`} ${2}{
+		public $1 () {}
+			${4:// code}
+		}${5}
+	}
 snippet in
-	interface ${1:`Filename("", "untitled")`} ${2:extends Parent}${3}
+	interface ${1:`Filename("", "untitled")`} ${2:extends Parent} {
+		${3://code}
+	}
 snippet m
-	${1:void} ${2:method}(${3}) ${4:throws }${5}
-snippet v
-	${1:String} ${2:var}${3: = null}${4};${5}
+	/** ${5:description} */
+	${1:public} ${2:void} ${3:name} (${4:arguments}) {
+		${6:// code}
+	}
+snippet mt
+	${1:public} ${2:void} ${3:name} (${4:arguments}) throws ${5:Exception} {
+		${6:// code}
+	}
 snippet co
 	static public final ${1:String} ${2:var} = ${3};${4}
 snippet cos
@@ -93,3 +123,28 @@ snippet tryf
 	}
 snippet rst
 	ResultSet ${1:rst}${2: = null}${3};${4}
+snippet get
+	/** Getter for $2 */
+	public ${1:type} get${2:name} () { return ${3:variable}; }
+snippet set
+	/** Setter for $1 */
+	public void set${1:name} (${2:type} ${3:variable}) {
+		this.$3 = $3;
+	}
+snippet prop
+	private ${1:type} ${2:name};
+	public void set${3:pubName} ($1 $2) {
+		this.$2 = $2;
+	}
+
+	public $1 get$3 () {
+		return $2;
+	}${4}
+snippet receive
+	if (memo.getType().equals("${1:type}")) {
+		${2:// code}
+	}
+snippet toS
+	public String toString () {
+		return ${1:thing};
+	}
