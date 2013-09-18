@@ -49,27 +49,6 @@ caption always '%?%F%{.g.}%?%-w%{= bw}%50>%n %t%{-}%+w%<'
 hardstatus alwayslastline "%=%C:%s %A %D %M %d %Y load: %l on %H"
 
 startup_message off 
-
-screen bash
-title ""
-screen bash
-title ""
-screen bash
-title ""
-screen bash
-title ""
-screen bash
-title ""
-screen bash
-title ""
-screen bash
-title ""
-screen bash
-title ""
-screen bash
-title ""
-screen bash
-title ""
 #pgup / pgdown
 bindkey -m "^[[6;5~" stuff "^f"
 bindkey -m "^[[5;5~" stuff "^b"
