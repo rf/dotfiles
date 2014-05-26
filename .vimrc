@@ -2,9 +2,9 @@ set t_Co=256
 colo wombat256
 set number
 set shortmess=atI
-set ts=3
-set shiftwidth=3
-set softtabstop=3
+set ts=2
+set shiftwidth=2
+set softtabstop=2
 
 " vimbit 10 easy split navigation
 nnoremap <C-h> <C-w>h
