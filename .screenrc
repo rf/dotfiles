@@ -46,7 +46,14 @@ caption always '%?%F%{.g.}%?%-w%{= bw}%50>%n %t%{-}%+w%<'
 # regardless of how many times you split.  This shows the time,
 # date, load avgs and the hostname, aligned to the right of the
 # screen.
-hardstatus alwayslastline "%=%C:%s %A %D %M %d %Y load: %l on %H"
+#hardstatus alwayslastline "%=%C:%s %A %D %M %d %Y load: %l on %H"
+
+
+termcapinfo xterm* 'hs:ts=\E]0;:fs=\007:ds=\E]0;\007'
+defhstatus "^E`"
+backtick 0 30 30 sh -c 'echo $USER@`hostname`: `screen -ls | grep --color=no -o "$PPID[^[:space:]]*" | cut -d. -f2`'
+hardstatus off
+
 
 startup_message off 
 #pgup / pgdown
@@ -78,3 +85,5 @@ attrcolor b ".I"
 term xterm-256color
 # erase background with current bg color
 #defbce "on"
+
+scrollback 100000
