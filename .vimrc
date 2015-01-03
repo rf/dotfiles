@@ -84,6 +84,7 @@ map K {
 hi CursorLine   cterm=NONE ctermbg=darkred
 hi CursorColumn cterm=NONE ctermbg=darkred
 set cursorline!
+" set cursorcolumn!
 
 " use pathogen
 
@@ -108,7 +109,10 @@ hi IndentGuidesEven guibg=green ctermbg=236
 set backupdir=~/.vim-tmp//,/tmp//
 set directory=~/.vim-tmp//,/tmp//
 
-set title
+"set title
+
+set exrc            " enable per-directory .vimrc files
+set secure          " disable unsafe commands in local .vimrc files
 
 " tips
 " { } pg skip
@@ -124,7 +128,8 @@ set title
 " >i{ indent block in
 " <i{ decrease indent
 " ctrl e and ctrl y scroll the text without changing line sel
-" ctrl L redraws
+
+
 
 
 " From http://vimcasts.org/episodes/tidying-whitespace/
@@ -144,7 +149,6 @@ function! Preserve(command)
 endfunction
 " Execute clear whitespace on save
 autocmd BufWritePre * :call Preserve("%s/\\s\\+$//e")
-
 
 
 

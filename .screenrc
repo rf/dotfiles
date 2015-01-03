@@ -40,7 +40,8 @@ bind a other
 # it also turns grey when inactive (in split mode).  'always'
 # makes it never go away.  See the screen manual for more
 # info on how I did this.
-caption always '%?%F%{.g.}%?%-w%{= bw}%50>%n %t%{-}%+w%<'
+caption always '%?%F%{.g.}%?%-w%{= bw}%50>%n %t%{-}%+w%< %= %` %l'
+backtick 0 30 30 sh -c 'echo $USER@`hostname`:`screen -ls | grep --color=no -o "$PPID[^[:space:]]*" | cut -d. -f2`'
 
 # hard status is at the bottom of the terminal, there's only 1
 # regardless of how many times you split.  This shows the time,
@@ -53,6 +54,7 @@ termcapinfo xterm* 'hs:ts=\E]0;:fs=\007:ds=\E]0;\007'
 defhstatus "^E`"
 backtick 0 30 30 sh -c 'echo $USER@`hostname`: `screen -ls | grep --color=no -o "$PPID[^[:space:]]*" | cut -d. -f2`'
 hardstatus off
+hardstatus string "%h"
 
 
 startup_message off 
