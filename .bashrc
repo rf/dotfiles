@@ -92,3 +92,9 @@ done
 alias sesh='screen -UdRS'
 alias seshes='screen -ls'
 
+SOCK="/tmp/SCREEN_SSH_AGENT-$USER"
+if test $SSH_AUTH_SOCK && [ $SSH_AUTH_SOCK != $SOCK ]; then
+  echo "Linking $SOCK to $SSH_AUTH_SOCK"
+  ln -sf $SSH_AUTH_SOCK $SOCK
+  export SSH_AUTH_SOCK=$SOCK
+fi
