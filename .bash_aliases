@@ -11,3 +11,13 @@ alias sesh='screen -UdRS'
 alias seshx='screen -UxS'
 alias seshes='screen -ls'
 
+platform='unknown'
+unamestr=`uname`
+
+if [[ "$unamestr" == 'Linux' ]]; then
+    alias listening='sudo netstat -t -p --listening'
+elif [[ "$unamestr" == 'Darwin' ]]; then
+    alias listening='lsof -iTCP -sTCP:LISTEN -P -n'
+fi
+
+alias npmpub='npm --registry=http://registry.npmjs.org/ publish'
