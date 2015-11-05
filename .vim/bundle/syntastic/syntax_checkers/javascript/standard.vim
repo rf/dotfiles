@@ -21,6 +21,9 @@ function! SyntaxCheckers_javascript_standard_IsAvailable() dict
     if !executable(self.getExec())
         return 0
     endif
+
+    let b:syntastic_checkers = ['standard']
+
     return syntastic#util#versionIsAtLeast(self.getVersion(), [2, 6, 1])
 endfunction
 

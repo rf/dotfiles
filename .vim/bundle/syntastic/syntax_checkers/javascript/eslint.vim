@@ -33,6 +33,9 @@ function! SyntaxCheckers_javascript_eslint_IsAvailable() dict
     if !executable(self.getExec())
         return 0
     endif
+
+    let b:syntastic_checkers = ['eslint']
+
     return g:syntastic_javascript_eslint_generic || syntastic#util#versionIsAtLeast(self.getVersion(), [0, 1])
 endfunction
 
