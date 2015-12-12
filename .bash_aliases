@@ -1,15 +1,9 @@
 alias savesshenv='env | grep SSH | sed s/=/=\"/ | sed s/$/\"/ > ~/.ssh/env'
 alias restoresshenv='source ~/.ssh/env'
 
-alias playdoh="node0.10 ~/uber/playdoh/cli/cli.js"
-
 alias ag="ag --pager less\ -R "
 
 alias dad="supervisorctl"
-
-alias sesh='screen -UdRS'
-alias seshx='screen -UxS'
-alias seshes='screen -ls'
 
 platform='unknown'
 unamestr=`uname`
@@ -21,3 +15,9 @@ elif [[ "$unamestr" == 'Darwin' ]]; then
 fi
 
 alias npmpub='npm --registry=http://registry.npmjs.org/ publish'
+
+function sesh() {
+    tmux attach -t $1 || tmux new -s $1
+}
+
+alias seshes='tmux list-sessions'
