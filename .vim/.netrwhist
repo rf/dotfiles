@@ -1,10 +1,2 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =8
-let g:netrw_dirhist_1='/Users/rfranknj/.dotfiles/.vim/bundle/snipmate.vim/snippets'
-let g:netrw_dirhist_2='/Users/russfrank/uber/heaven-alerts/config'
-let g:netrw_dirhist_3='/Users/russfrank/uber/tcollector/clients'
-let g:netrw_dirhist_4='/Users/russfrank/uber/tcollector'
-let g:netrw_dirhist_5='/Users/russfrank/uber/tcollector/clients'
-let g:netrw_dirhist_6='/Users/russfrank/uber/node-zipkin-http/test'
-let g:netrw_dirhist_7='/Users/russfrank/uber/oss-hyperbahn/clients'
-let g:netrw_dirhist_8='/Users/russfrank/.vim/bundle/syntastic/syntax_checkers/javascript'
+let g:netrw_dirhist_cnt =0
