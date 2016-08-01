@@ -1,0 +1,2 @@
+alias nom='rm -rf node_modules && mkdir node_modules && touch node_modules/.metadata_never_index && a=`npm get progress` && npm set progress=false && npm install && npm set progress=$a'
+alias nom-cache='npm cache clean && nom'
