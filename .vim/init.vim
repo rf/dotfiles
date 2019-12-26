@@ -1,1 +1,1 @@
-/Users/russfrank/code/dotfiles/.vimrc
+/Users/rf/code/dotfiles/.vimrc

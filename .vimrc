@@ -1,3 +1,14 @@
+call plug#begin('~/.vim/plugged')
+
+Plug 'fatih/vim-go'
+Plug 'vim-airline/vim-airline'
+Plug 'dense-analysis/ale'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'ctrlpvim/ctrlp.vim'
+
+call plug#end()
+
+
 set t_Co=256
 colo wombat256
 set number
@@ -145,3 +156,10 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['jshint']
+
+call deoplete#custom#option('omni_patterns', {
+\ 'go': '[^. *\t]\.\w*',
+\})
+
+let g:ctrlp_map = '<c-j>'
+let g:ctrlp_cmd = 'CtrlP'
