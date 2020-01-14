@@ -5,6 +5,11 @@ Plug 'vim-airline/vim-airline'
 Plug 'dense-analysis/ale'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'godoctor/godoctor.vim'
 
 call plug#end()
 
@@ -16,13 +21,6 @@ set shortmess=atI
 set ts=4
 set shiftwidth=4
 set softtabstop=4
-
-" vimbit 10 easy split navigation
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-"
 
 " vimbit 92 kep search pattern at center of screen
 nnoremap <silent> n nzz
@@ -97,16 +95,6 @@ hi CursorColumn cterm=NONE ctermbg=darkred
 set cursorline!
 set cursorcolumn!
 
-" use pathogen
-
-filetype off
-
-" This stuff doesn't work on the old vim setups in solaris and centos
-if version >= 702
-   call pathogen#infect()
-   call pathogen#helptags()
-endif
-
 filetype plugin on
 syntax on
 
@@ -145,21 +133,41 @@ set secure          " disable unsafe commands in local .vimrc files
 nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
 
-" syntastic settings
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['jshint']
-
 call deoplete#custom#option('omni_patterns', {
 \ 'go': '[^. *\t]\.\w*',
 \})
 
 let g:ctrlp_map = '<c-j>'
 let g:ctrlp_cmd = 'CtrlP'
+
+" Enable snipMate compatibility feature.
+let g:neosnippet#enable_snipmate_compatibility = 1
+
+" Tell Neosnippet about the other snippets
+let g:neosnippet#snippets_directory='~/.config/nvim/extra_snippets'
+
+
+" Plugin key-mappings.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <expr><TAB>
+ \ pumvisible() ? "\<C-n>" :
+ \ neosnippet#expandable_or_jumpable() ?
+ \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+
+au Filetype go nmap gi <Plug>(go-info)
+au Filetype go nmap gt <Plug>(go-def-vertical)
+
+let g:ale_linters = {'go': ['bingo', 'gobuild', 'gofmt', 'golangci-lint', 'golint', 'gometalinter', 'gopls', 'gosimple', 'gotype', 'govet', 'staticcheck']}

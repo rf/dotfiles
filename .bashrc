@@ -98,3 +98,4 @@ if test $SSH_AUTH_SOCK && [ $SSH_AUTH_SOCK != $SOCK ]; then
   ln -sf $SSH_AUTH_SOCK $SOCK
   export SSH_AUTH_SOCK=$SOCK
 fi
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
