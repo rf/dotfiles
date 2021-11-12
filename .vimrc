@@ -2,14 +2,28 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'fatih/vim-go'
 Plug 'vim-airline/vim-airline'
-Plug 'dense-analysis/ale'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'ctrlpvim/ctrlp.vim'
+"Plug 'dense-analysis/ale'
+Plug 'knsh14/vim-github-link'
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'junegunn/fzf', { 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
+"Plug 'Shougo/neosnippet.vim'
+"Plug 'Shougo/neosnippet-snippets'
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'godoctor/godoctor.vim'
+"Plug 'godoctor/godoctor.vim'
+Plug 'uber/prototool', { 'rtp':'vim/prototool' }
+Plug 'pangloss/vim-javascript'
+"Plug 'Quramy/tsuquyomi'
+Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+Plug 'mlaursen/vim-react-snippets'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'Shougo/vimproc.vim'
+Plug 'jparise/vim-graphql'
+
+Plug 'tpope/vim-dadbod'
 
 call plug#end()
 
@@ -38,11 +52,11 @@ nmap <C-a> <Home>
 nmap <C-e> <End>
 "
 
-" vimbit 13 80 character line coloring
+" 100 character line coloring
 if exists('+colorcolumn')
-set colorcolumn=80
+set colorcolumn=100
 else
-au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>100v.\+', -1)
 endif      
 "
 
@@ -133,41 +147,62 @@ set secure          " disable unsafe commands in local .vimrc files
 nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
 
-call deoplete#custom#option('omni_patterns', {
-\ 'go': '[^. *\t]\.\w*',
-\})
+" call deoplete#custom#option('omni_patterns', {
+" \ 'go': '[^. *\t]\.\w*',
+" \})
 
-let g:ctrlp_map = '<c-j>'
-let g:ctrlp_cmd = 'CtrlP'
+" let g:fzf_layout = { 'down': '50%' }
+nnoremap <C-j> :Files<CR>
+
 
 " Enable snipMate compatibility feature.
-let g:neosnippet#enable_snipmate_compatibility = 1
+"let g:neosnippet#enable_snipmate_compatibility = 1
 
 " Tell Neosnippet about the other snippets
-let g:neosnippet#snippets_directory='~/.config/nvim/extra_snippets'
+"let g:neosnippet#snippets_directory='~/.config/nvim/extra_snippets'
 
 
 " Plugin key-mappings.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-" SuperTab like snippets behavior.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <expr><TAB>
- \ pumvisible() ? "\<C-n>" :
- \ neosnippet#expandable_or_jumpable() ?
- \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+"imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+"smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+"xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 " For conceal markers.
 if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
 
-au Filetype go nmap gi <Plug>(go-info)
-au Filetype go nmap gt <Plug>(go-def-vertical)
+"au Filetype go nmap gi <Plug>(go-info)
+"au Filetype go nmap gm <Plug>(go-imports)
+"au Filetype go nmap gt <Plug>(go-def-vertical)
 
-let g:ale_linters = {'go': ['bingo', 'gobuild', 'gofmt', 'golangci-lint', 'golint', 'gometalinter', 'gopls', 'gosimple', 'gotype', 'govet', 'staticcheck']}
+"\    'go': ['bingo', 'gobuild', 'gofmt', 'golangci-lint', 'golint', 'gometalinter', 'gopls', 'gosimple', 'govet', 'staticcheck'],
+
+"let g:ale_linters = {'go': ['bingo', 'gobuild', 'gofmt', 'golangci-lint', 'golint', 'gometalinter', 'gopls', 'gosimple', 'gotype', 'govet', 'staticcheck']}
+let g:ale_linters = {
+\    'go': ['golangci-lint', 'govet', 'gofmt', 'golint', 'gosimple'],
+\    'proto': ['prototool-lint'],
+\}
+let g:ale_go_golangci_lint_options = '--enable-all --disable wsl'
+"let g:ale_linter_aliases = {'proto': ['prototool-lint']}
+
+"let g:go_def_mode='gopls'
+"let g:go_info_mode='gopls'
+
+let g:ctrlp_max_files=0
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+
+let g:prettier#autoformat = 0
+"autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+"
+autocmd FileType typescriptreact setlocal shiftwidth=2 tabstop=2
+autocmd FileType typescript setlocal shiftwidth=2 tabstop=2
+
+source ~/.config/nvim/init.vim.coc
+
+autocmd InsertLeave * call coc#float#close_all()
+
+set title
+
+set bg=dark

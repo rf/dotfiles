@@ -1,0 +1,68 @@
+snippet     pfunc
+abbr        func ...() { ... }
+alias pfn
+options     head
+  // ${1:FunctionName} ${2:does something}
+  func $1(${3}) ${4:error }{
+    ${0:TARGET:return }
+  }
+
+snippet pstruct
+abbr    type Pub struct { ... }
+alias ps
+options head
+  // ${1:StructName} ${2:is something}
+  type $1 struct {
+    ${0:TARGET}
+  }
+
+snippet pmeth
+abbr func (r *reciever) Method { ... }
+alias pm
+  // ${1:Method} ${2:does something}
+  func (${3:reciever}) $1 (${4:args}) ${5:return} {
+    ${6:// body}
+  }
+
+snippet     testtable
+abbr        var test = {...}{...} for {t.Run(){...}}
+alias rtt
+options     head
+  var tests = []struct {
+      name string
+      expected ${2}
+      expectedErr error
+      given ${3}
+  }{
+
+      {
+        name: "${4}", 
+        expected: ,
+        expectedErr: nil,
+        given: ,
+      },
+
+  }
+  for _, tt := range tests {
+      tt := tt
+      t.Run(tt.name, func(t *testing.T){
+          actual, err := ${1:Function}(tt.given)
+          assert.EqualValues(t, tt.expectedErr, err)
+          assert.EqualValues(t, tt.expected, actual)
+      })
+  }
+
+snippet rpc
+    // ${1:RPCName} implements the $1 rpc
+    func (${2:s *Server}) $1(
+        ctx context.Context, req *pb.$1Request,
+    ) (*pb.$1Response, error) {
+        ${3://impl}
+        return &pb.$1Response{
+
+        }, nil
+    }
+
+snippet cp
+  ${1:name}Copy := *(&$1)
+

@@ -1,0 +1,19 @@
+# move a golang package
+gomv() {
+    SRC=$1
+    DEST=$2
+
+    # try to guess import path. It is probably pwd minus $GOPATH
+    PWD=`pwd`;
+    RM="${GOPATH}src/";
+    PREFIX="$(echo ${PWD/$RM/} | tr '[:upper:]' '[:lower:]')" 
+
+    echo "Moving $SRC to $DEST"
+
+    # actually move the package on the filesystem and in git
+    git mv $SRC $DEST
+
+    # try to fix all the import paths
+    echo sed -i.bak "s#$PREFIX/$SRC#$PREFIX/$DEST#"
+    find . -name "*.go" | xargs sed -i.bak "s#$PREFIX/$SRC#$PREFIX/$DEST#"
+}

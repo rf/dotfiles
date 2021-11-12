@@ -1,0 +1,14 @@
+snippet reqres
+    message ${1:Foobar}Request {
+        ${2:// input}
+    }
+
+    message $1Response {
+        ${3:// output}
+    }
+
+snippet rpc
+    // ${1:RPCName} ${2:...}
+    rpc $1 ($1Request) returns ($1Response) {}
+
+
