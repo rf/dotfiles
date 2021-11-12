@@ -1,55 +1,121 @@
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/russfrank/.oh-my-zsh
+export ZSH="/Users/rf/.oh-my-zsh"
 
-ZSH_THEME="juanghurtado"
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="rf"
 
-plugins=(git)
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
-export PATH="/Users/russfrank/.nvm/v0.10.32/bin:/Users/russfrank/uber/FlameGraph:/Users/russfrank/bin:/Users/russfrank/node_modules/.bin:/opt/local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin"
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS=true
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
-setopt no_share_history
+# User configuration
 
-for part in $HOME/.zsh.d/??_*; do
-    source $part
-done
+# export MANPATH="/usr/local/man:$MANPATH"
 
-bindkey -v
-bindkey "^R" history-incremental-search-backward
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
 
-alias chrome='"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"'
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
 
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
 
-# added by newengsetup
-export EDITOR=vim
-export UBER_HOME="$HOME/Uber"
-export UBER_OWNER="rf@uber.com"
-export UBER_LDAP_UID="rf"
-export VAGRANT_DEFAULT_PROVIDER=aws
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
 
-path+=('$HOME/bin')
+_source_zshd(){
+# Finally, source all the files in zsh.d (ALPHA order)
+  for zshd in $(find ~/.zsh.d/* | sort );
+    do source "${zshd}"
+  done
 
-[ -s "/usr/local/bin/virtualenvwrapper.sh" ] && . /usr/local/bin/virtualenvwrapper.sh
-[ -s "$HOME/.nvm/nvm.sh" ] && . $HOME/.nvm/nvm.sh
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
-_sync_dir () {
-    cmd=$1
-    shift
-    new_directory=$(boxer sync_dir $@)
-    if [ "$?" -eq "0" ]; then
-        $cmd $new_directory
-    else
-        echo "$new_directory"
-    fi
+  # also .zsh.oden.d, job specific zsh.d files
+  for zshd in $(find ~/.zsh.oden.d/* | sort );
+    do source "${zshd}"
+  done
 }
-cdsync () {
-    _sync_dir cd $@
-}
-editsync () {
-    _sync_dir $EDITOR $@
-}
-opensync () {
-    _sync_dir open @
-}
+
+_source_zshd
+
+#bindkey -v
+
+# reverse I
+# bindkey '^R' history-incremental-search-backward
+
+setopt APPEND_HISTORY
+
