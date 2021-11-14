@@ -5,7 +5,7 @@ Plug 'vim-airline/vim-airline'
 "Plug 'dense-analysis/ale'
 Plug 'knsh14/vim-github-link'
 "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile > /tmp/coclog 2>&1'}
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
@@ -17,8 +17,7 @@ Plug 'uber/prototool', { 'rtp':'vim/prototool' }
 Plug 'pangloss/vim-javascript'
 "Plug 'Quramy/tsuquyomi'
 Plug 'MaxMEllon/vim-jsx-pretty'
-Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
-Plug 'mlaursen/vim-react-snippets'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install > /tmp/pretlog 2>&1', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'Shougo/vimproc.vim'
 Plug 'jparise/vim-graphql'
