@@ -101,3 +101,5 @@ fi
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+[[ -s "/home/rf/.gvm/scripts/gvm" ]] && source "/home/rf/.gvm/scripts/gvm"
