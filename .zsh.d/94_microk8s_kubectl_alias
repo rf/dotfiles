@@ -1,0 +1,4 @@
+if command -v microk8s &> /dev/null; then
+    alias mkubectl='microk8s kubectl'
+    alias mk='microk8s kubectl'
+fi
