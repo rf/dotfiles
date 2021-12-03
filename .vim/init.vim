@@ -111,12 +111,6 @@ set cursorcolumn!
 filetype plugin on
 syntax on
 
-let g:indent_guides_auto_colors = 0
-let g:indent_guides_enable_on_vim_startup = 1
-
-hi IndentGuidesOdd  guibg=red   ctermbg=235
-hi IndentGuidesEven guibg=green ctermbg=236
-
 " throw all temp files in ~/.vim-tmp/
 set backupdir=~/.vim-tmp//,/tmp//
 set directory=~/.vim-tmp//,/tmp//
@@ -205,3 +199,9 @@ autocmd InsertLeave * call coc#float#close_all()
 set title
 
 set bg=dark
+
+let g:indent_guides_auto_colors = 0
+let g:indent_guides_enable_on_vim_startup = 1
+
+hi IndentGuidesOdd  guibg=red   ctermbg=235
+hi IndentGuidesEven guibg=green ctermbg=236
