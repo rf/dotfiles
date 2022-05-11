@@ -25,6 +25,10 @@ Plug 'jparise/vim-graphql'
 
 Plug 'tpope/vim-dadbod'
 
+Plug 'petobens/poet-v'
+
+Plug 'github/copilot.vim'
+
 call plug#end()
 
 
@@ -206,3 +210,18 @@ autocmd InsertLeave * call coc#float#close_all()
 set title
 
 set bg=dark
+
+" Configure petobens/poet-v
+let g:poetv_executables = ['poetry']
+
+
+" Configure github copilot
+let g:copilot_no_maps = v:true
+
+imap <silent><script><expr> <C-L> copilot#Accept("\<CR>")
+imap <silent><script><expr> <C-J> copilot#Next()
+imap <silent><script><expr> <C-K> copilot#Previous()
+imap <silent><script><expr> <C-H> copilot#Dismiss()
+
+" leader + s for 'replace thing under cursor'
+nnoremap <leader>s "zye:%s/<C-R>z/

@@ -16,3 +16,5 @@
     tt = !git checkout --theirs $1 && git add $1
 [url "git@github.com:"]
 	insteadOf = https://github.com/
+[core]
+	autocrlf = false
