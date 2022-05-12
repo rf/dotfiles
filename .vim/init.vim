@@ -5,7 +5,7 @@ Plug 'vim-airline/vim-airline'
 "Plug 'dense-analysis/ale'
 Plug 'knsh14/vim-github-link'
 "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile > /tmp/coclog 2>&1'}
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
@@ -17,12 +17,17 @@ Plug 'uber/prototool', { 'rtp':'vim/prototool' }
 Plug 'pangloss/vim-javascript'
 "Plug 'Quramy/tsuquyomi'
 Plug 'MaxMEllon/vim-jsx-pretty'
-Plug 'prettier/vim-prettier', { 'do': 'yarn install > /tmp/pretlog 2>&1', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+Plug 'mlaursen/vim-react-snippets'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'Shougo/vimproc.vim'
 Plug 'jparise/vim-graphql'
 
 Plug 'tpope/vim-dadbod'
+
+Plug 'petobens/poet-v'
+
+Plug 'github/copilot.vim'
 
 call plug#end()
 
@@ -110,6 +115,12 @@ set cursorcolumn!
 
 filetype plugin on
 syntax on
+
+let g:indent_guides_auto_colors = 0
+let g:indent_guides_enable_on_vim_startup = 1
+
+hi IndentGuidesOdd  guibg=red   ctermbg=235
+hi IndentGuidesEven guibg=green ctermbg=236
 
 " throw all temp files in ~/.vim-tmp/
 set backupdir=~/.vim-tmp//,/tmp//
@@ -200,8 +211,17 @@ set title
 
 set bg=dark
 
-let g:indent_guides_auto_colors = 0
-let g:indent_guides_enable_on_vim_startup = 1
+" Configure petobens/poet-v
+let g:poetv_executables = ['poetry']
 
-hi IndentGuidesOdd  guibg=red   ctermbg=235
-hi IndentGuidesEven guibg=green ctermbg=236
+
+" Configure github copilot
+let g:copilot_no_maps = v:true
+
+imap <silent><script><expr> <C-L> copilot#Accept("\<CR>")
+imap <silent><script><expr> <C-J> copilot#Next()
+imap <silent><script><expr> <C-K> copilot#Previous()
+imap <silent><script><expr> <C-H> copilot#Dismiss()
+
+" leader + s for 'replace thing under cursor'
+nnoremap <leader>s "zye:%s/<C-R>z/
