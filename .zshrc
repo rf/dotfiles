@@ -121,3 +121,5 @@ setopt APPEND_HISTORY
 unsetopt share_history
 
 alias ztheme='(){ export ZSH_THEME="$@" && source $ZSH/oh-my-zsh.sh }'
+
+unset FZF_DEFAULT_OPTS

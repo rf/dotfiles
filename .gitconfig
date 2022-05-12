@@ -13,8 +13,13 @@
    br = checkout -b
    ci = commit
    unstage = reset
-    tt = !git checkout --theirs $1 && git add $1
+   tt = !git checkout --theirs $1 && git add $1
+   to = !git checkout --ours $1 && git add $1
 [url "git@github.com:"]
 	insteadOf = https://github.com/
 [core]
 	autocrlf = false
+[push]
+	default = current
+[pull]
+    default = current
