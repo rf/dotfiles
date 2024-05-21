@@ -25,6 +25,18 @@
                 "directory": "/tmp/ccls"
             }
         }
+    },
+    "terraform": {
+        "command": "terraform-ls",
+        "args": ["serve"],
+        "filetypes": [
+            "terraform",
+            "tf"
+        ],
+        "initializationOptions": {},
+        "settings": {}
     }
-  }
+  },
+  "sql.database": "postgresql",
+  "python.jediEnabled": false
 }

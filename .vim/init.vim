@@ -1,5 +1,6 @@
 call plug#begin('~/.vim/plugged')
 
+Plug 'github/copilot.vim'
 Plug 'fatih/vim-go'
 Plug 'vim-airline/vim-airline'
 "Plug 'dense-analysis/ale'
@@ -27,7 +28,7 @@ Plug 'tpope/vim-dadbod'
 
 Plug 'petobens/poet-v'
 
-Plug 'github/copilot.vim'
+Plug 'hashivim/vim-terraform'
 
 call plug#end()
 
@@ -61,7 +62,7 @@ if exists('+colorcolumn')
 set colorcolumn=100
 else
 au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>100v.\+', -1)
-endif      
+endif
 "
 
 " vimbit 45 sudo save file
@@ -72,11 +73,11 @@ set expandtab
 :syn on
 if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
-    \| exe "normal! g'\"" | endif 
+    \| exe "normal! g'\"" | endif
 endif
 
 
-set showcmd      " Show (partial) command in status line. 
+set showcmd      " Show (partial) command in status line.
 set showmatch    " Show matching brackets.
 set ignorecase      " Do case insensitive matching
 set smartcase    " Do smart case matching
@@ -149,6 +150,16 @@ set secure          " disable unsafe commands in local .vimrc files
 
 " remove spaces on end of lines
 nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+
+
+" auto trim whitespace
+fun! TrimWhitespace()
+    let l:save = winsaveview()
+    keeppatterns %s/\s\+$//e
+    call winrestview(l:save)
+endfun
+
+autocmd BufWritePre * call TrimWhitespace()
 
 
 " call deoplete#custom#option('omni_patterns', {
@@ -225,3 +236,5 @@ imap <silent><script><expr> <C-H> copilot#Dismiss()
 
 " leader + s for 'replace thing under cursor'
 nnoremap <leader>s "zye:%s/<C-R>z/
+
+let g:db = 'postgres://postgres:scruff-hubby-parlor-debris@localhost:5432/postgres'
