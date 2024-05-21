@@ -1,0 +1,5 @@
+unamestr=`uname`
+if [[ "$unamestr" == 'Linux' ]]; then
+elif [[ "$unamestr" == 'Darwin' ]]; then
+    PATH=/opt/homebrew/bin:$PATH
+fi
