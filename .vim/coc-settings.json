@@ -25,7 +25,27 @@
                 "directory": "/tmp/ccls"
             }
         }
+    },
+    "terraform": {
+        "command": "terraform-ls",
+        "args": ["serve"],
+        "filetypes": [
+            "terraform",
+            "tf"
+        ],
+        "initializationOptions": {},
+        "settings": {}
+    },
+
+    "golangci-lint-languageserver": {
+      "command": "golangci-lint-langserver",
+      "filetypes": ["go"],
+      "initializationOptions": {
+        "command": ["golangci-lint", "run", "--out-format", "json", "--issues-exit-code=1"]
+      }
     }
   },
   "snippets.ultisnips.pythonPrompt": false
+  "sql.database": "postgresql",
+  "python.jediEnabled": false
 }
