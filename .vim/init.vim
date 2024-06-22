@@ -30,6 +30,8 @@ Plug 'petobens/poet-v'
 
 Plug 'hashivim/vim-terraform'
 
+Plug 'tpope/vim-surround'
+
 call plug#end()
 
 
@@ -40,6 +42,9 @@ set shortmess=atI
 set ts=4
 set shiftwidth=4
 set softtabstop=4
+
+" disable mouse
+set mouse=
 
 " vimbit 92 kep search pattern at center of screen
 nnoremap <silent> n nzz
@@ -120,8 +125,9 @@ syntax on
 let g:indent_guides_auto_colors = 0
 let g:indent_guides_enable_on_vim_startup = 1
 
-hi IndentGuidesOdd  guibg=red   ctermbg=235
-hi IndentGuidesEven guibg=green ctermbg=236
+hi IndentGuidesOdd  guibg=#232323   ctermbg=235
+hi IndentGuidesEven guibg=#404040 ctermbg=236
+
 
 " throw all temp files in ~/.vim-tmp/
 set backupdir=~/.vim-tmp//,/tmp//
