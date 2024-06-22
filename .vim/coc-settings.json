@@ -26,5 +26,6 @@
             }
         }
     }
-  }
+  },
+  "snippets.ultisnips.pythonPrompt": false
 }
