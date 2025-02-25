@@ -19,5 +19,6 @@ packages-debian:
 	sudo apt install tmux neovim build-essential git zsh
 
 ohmyzsh:
-	sh -c "`curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sed 's:env zsh -l::g' | sed 's:chsh -s .*$::g'`"
+	sh -c "`curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh`"
 	cp rf.zsh-theme ~/.oh-my-zsh/themes/
+	git clone --depth 1 https://github.com/unixorn/fzf-zsh-plugin.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-zsh-plugin

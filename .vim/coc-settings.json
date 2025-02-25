@@ -2,8 +2,13 @@
   "languageserver": {
     "golang": {
       "command": "gopls",
-      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-      "filetypes": ["go"]
+      "rootPatterns": ["go.work", "go.mod", ".vim/", ".git/", ".hg/"],
+      "filetypes": ["go"],
+      "initializationOptions": {
+        "usePlaceholders": true,
+        "local": "true",
+        "gofumpt": true
+      }
     },
     "ccls": {
         "command": "ccls",
@@ -38,14 +43,16 @@
     },
 
     "golangci-lint-languageserver": {
+      "enable": false,
       "command": "golangci-lint-langserver",
+      "args": ["-debug"],
       "filetypes": ["go"],
       "initializationOptions": {
         "command": ["golangci-lint", "run", "--out-format", "json", "--issues-exit-code=1"]
       }
     }
   },
-  "snippets.ultisnips.pythonPrompt": false
+  "snippets.ultisnips.pythonPrompt": false,
   "sql.database": "postgresql",
   "python.jediEnabled": false
 }

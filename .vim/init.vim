@@ -166,6 +166,7 @@ fun! TrimWhitespace()
 endfun
 
 autocmd BufWritePre * call TrimWhitespace()
+" autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
 
 
 " call deoplete#custom#option('omni_patterns', {
@@ -244,3 +245,6 @@ imap <silent><script><expr> <C-H> copilot#Dismiss()
 nnoremap <leader>s "zye:%s/<C-R>z/
 
 let g:db = 'postgres://postgres:scruff-hubby-parlor-debris@localhost:5432/postgres'
+
+" Fixes syntax highlighting errors for large files
+syntax sync minlines=10000
